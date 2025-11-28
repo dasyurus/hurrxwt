@@ -36,7 +36,7 @@ __device__ float2 c_mult(float2 a, float2 b) {
 
 // Scale kernel
 __global__ void scale(float2* data, long long MN, int N) {
-	long long idx = blockIdx.x * blockDim.x + threadIdx.x;
+	long long idx = (long long)blockIdx.x * blockDim.x + threadIdx.x;
 	if (idx < MN) {
 	    data[idx].x /= N;
 	    data[idx].y /= N;
@@ -45,7 +45,7 @@ __global__ void scale(float2* data, long long MN, int N) {
 
 // Conjugate kernel
 __global__ void conj(float2* data, long long MN) {
-	long long idx = blockIdx.x * blockDim.x + threadIdx.x;
+	long long idx = (long long)blockIdx.x * blockDim.x + threadIdx.x;
 	if (idx < MN) {
 	    data[idx].y *= -1;
 	}
