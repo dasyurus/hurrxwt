@@ -837,10 +837,10 @@ int main(int argc, char* argv[]) {
 	reduce_ts_map_d<<<numBlocks33,blockSize3>>>(ts_map_d,ts_map_d3,t.size(),gridN);
 
 	// free no longer needed buffers
-	err = hipFree(&wind_out2); 
-	err = hipFree(&lat);			       
-	err = hipFree(&lon);			       
-	err = hipFree(&wind);			       
+	err = hipFree(wind_out2); 
+	err = hipFree(lat);			       
+	err = hipFree(lon);			       
+	err = hipFree(wind);			       
 
 	// recast to a 1-d array, and remove coordinates with hits < nhits
 	std::vector<int> v_perlatlon;
