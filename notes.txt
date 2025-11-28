@@ -1,0 +1,14 @@
+Compilation is straightforward:
+hipcc -O3 -o yourexecutable ../main.cpp ../csv.cpp --offload-arch=yourarchitecture
+
+For 7900XTX use gfx1100 as your architecture.
+
+And to run
+./yourexecutable outputname
+
+Be careful with the size of your lat_range and lon_range; there is no safety to stop code if it may be too large.
+But it should be obvious in the results if it's too large.
+
+This code should be easily runnable on Nvidia devices by replacing all hip* calls with cuda* calls.
+
+
