@@ -521,11 +521,11 @@ float get_mean(std::vector<float> in)
 	return sum(in)/in.size();
 }
 
-int get_work_size(int global, int local) {
-	return (global + local -1)/local * local; // last * local not needed in cuda/hip!
+int get_work_size(int N, int blockSize) {
+	return (N + blockSize - 1) / blockSize;
 }
-long long get_work_size_lld(long long global, int local) {
-	return (global + local -1)/local * local; // last * local not needed in cuda/hip!
+long long get_work_size_lld(long long N, int blockSize) {
+	return (N + blockSize - 1) / blockSize;
 }
 
 // geometrically spaced array, to determine periods for CWTs
